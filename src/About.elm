@@ -1,52 +1,74 @@
 module About exposing (view)
 
-import Element exposing (Element, spacing, column, paddingEach, fill, width, paragraph, text, centerX)
+import Element exposing (Element, spacing, column, paddingEach, fill, width, paragraph, text, centerX, html)
 import Element.Font as Font
 import Element.Background as Background
+import Html
+import Html.Attributes as Attr
 import Styles
 
 
 view : Element msg
 view =
+    column
+        [ width fill
+        , Background.color Styles.colors.pink
+        , paddingEach { top = 64, bottom = 64, left = 64, right = 64 }
+        , Font.color Styles.colors.white
+        , centerX
+        ]
+        [ headerParagraph
+        , bodyParagraphs
+        ]
+
+
+headerParagraph =
+    paragraph
+        [ Font.size Styles.fontSizes.bodyHead
+        , Styles.fontFamilies.bitter
+        , spacing 18
+        , Font.letterSpacing 2
+        , Font.bold
+        , Font.center
+        , paddingEach { top = 0, bottom = 32, left = 0, right = 0 }
+        ]
+        [ text headerText ]
+
+
+bodyParagraphs =
     let
         noPadding =
             Styles.noPadding
 
         textStyling =
-            [ spacing 20, paddingEach { noPadding | bottom = 32 } ]
+            [ spacing 16, paddingEach { noPadding | top = 40 } ]
 
         bulletStyling =
-            [ spacing 20, paddingEach { noPadding | bottom = 32, left = 50 } ]
+            [ spacing 16, paddingEach { noPadding | left = 32 } ]
     in
         column
-            [ width fill
-            , Background.color Styles.colors.pink
-            , spacing 15
-            , paddingEach { top = 60, bottom = 15, left = 70, right = 70 }
-            , Font.color Styles.colors.white
-            , centerX
+            [ Font.size Styles.fontSizes.bodyText
+            , Styles.fontFamilies.hind
             ]
-            [ paragraph
-                [ Font.size Styles.fontSizes.bodyHead
-                , Styles.fontFamilies.bitter
-                , spacing 18
-                , Font.letterSpacing 2
-                , Font.bold
-                , Font.center
-                , paddingEach { top = 0, bottom = 32, left = 0, right = 0 }
-                ]
-                [ text headerText ]
-            , column
-                [ Font.size Styles.fontSizes.bodyText
-                , spacing 15
-                ]
-                [ paragraph [ spacing 20, paddingEach { top = 0, bottom = 32, left = 0, right = 0 } ] [ text paragraph1 ]
-                , paragraph textStyling [ text paragraph2 ]
-                , paragraph bulletStyling [ text bullet1 ]
-                , paragraph bulletStyling [ text bullet2 ]
-                , paragraph textStyling [ text paragraph3 ]
-                ]
+            [ paragraph textStyling [ text paragraph1 ]
+            , paragraph textStyling [ text paragraph2 ]
+            , paragraph bulletStyling [ html (bulletedList [ bullet1, bullet2 ]) ]
+            , paragraph textStyling [ text paragraph3 ]
             ]
+
+
+bulletedList : List String -> Html.Html msg
+bulletedList lines =
+    Html.ul
+        [ Attr.style "list-style" "none"
+        , Attr.style "margin-left" "0"
+        , Attr.style "padding-left" "1em"
+        , Attr.style "text-indent" "-1em"
+        ]
+        (List.map
+            (\line -> Html.li [] [ Html.text line ])
+            lines
+        )
 
 
 headerText =
@@ -62,11 +84,11 @@ paragraph2 =
 
 
 bullet1 =
-    "» choose a coat not stuffed with feathers, trimmed with fur,     or made of wool"
+    "» choose a coat not stuffed with feathers, trimmed with fur, or made of wool"
 
 
 bullet2 =
-    "» pick up our cruelty-free patch to it to show you’re proud of not being a  murderer this year, or any year "
+    "» pick up our cruelty-free patch to it to show you’re proud of not being a murderer this year, or any year "
 
 
 paragraph3 =
