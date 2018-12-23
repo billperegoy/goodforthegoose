@@ -49,7 +49,7 @@ patch screenSize =
         image
             imageAttributes
             { src = "/patch-mobile.png"
-            , description = "Patch Image"
+            , description = "Patch Image."
             }
 
 

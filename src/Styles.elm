@@ -27,6 +27,7 @@ fontSizes =
     , buttonText = scaleFont 0.947
     , bodyHead = scaleFont 1.6
     , bodyText = scaleFont 1.0
+    , callToActionBodyHead = scaleFont 1.9
     }
 
 
