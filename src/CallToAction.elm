@@ -1,6 +1,6 @@
 module CallToAction exposing (view)
 
-import Element exposing (Element, padding, paddingXY, fillPortion, width, column, spacing, fill, row, paragraph, image, text, px)
+import Element exposing (Element, padding, paddingEach, paddingXY, fillPortion, width, column, spacing, fill, row, paragraph, image, text, px, centerX)
 import Element.Background as Background
 import Element.Font as Font
 import Components
@@ -13,7 +13,6 @@ view =
         [ width fill
         , Background.color Styles.colors.cyanBlue
         , Font.color Styles.colors.white
-        , padding 64
         , spacing 20
         ]
         [ textColumn
@@ -23,7 +22,8 @@ view =
 
 textColumn =
     column
-        [ width (fillPortion 1)
+        [ width (fillPortion 2)
+        , paddingEach { left = 64, right = 0, top = 64, bottom = 64 }
         , spacing 16
         ]
         [ paragraph
@@ -45,6 +45,7 @@ imageColumn =
         [ image
             [ paddingXY 0 15
             , width (px 200)
+            , centerX
             ]
             { src = "/patch-mobile.png"
             , description = "Patch Image."
