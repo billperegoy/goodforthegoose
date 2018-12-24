@@ -8,6 +8,7 @@ import Element.Input as Input
 import Styles
 
 
+buyButton : Element msg
 buyButton =
     Input.button
         [ centerX
@@ -21,6 +22,7 @@ buyButton =
         }
 
 
+patch : Element msg
 patch =
     let
         noPadding =

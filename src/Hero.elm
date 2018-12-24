@@ -10,6 +10,7 @@ import Components
 import Model
 
 
+direction : Model.ScreenSize -> (List (Element.Attribute msg) -> List (Element msg) -> Element msg)
 direction screenSize =
     if screenSize == Model.NarrowMobile then
         column
@@ -30,6 +31,7 @@ view screenSize =
             ]
 
 
+patch : Model.ScreenSize -> Element msg
 patch screenSize =
     let
         noPadding =
@@ -53,6 +55,7 @@ patch screenSize =
             }
 
 
+heroText : Element msg
 heroText =
     column
         [ width (fillPortion 3)
@@ -66,6 +69,7 @@ heroText =
         ]
 
 
+heroHeader : Element msg
 heroHeader =
     let
         noPadding =
@@ -84,6 +88,7 @@ heroHeader =
             [ text "NOT FEELING UP TO CRUELTY THIS WINTER?" ]
 
 
+heroSubhead : Element msg
 heroSubhead =
     let
         noPadding =

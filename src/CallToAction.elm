@@ -1,6 +1,6 @@
 module CallToAction exposing (view)
 
-import Element exposing (Element, padding, paddingEach, paddingXY, fillPortion, width, column, spacing, fill, row, paragraph, image, text, px, centerX)
+import Element exposing (Element, padding, paddingEach, paddingXY, fillPortion, width, column, spacing, fill, row, paragraph, image, text, px, centerX, el)
 import Element.Background as Background
 import Element.Font as Font
 import Components
@@ -20,6 +20,7 @@ view =
         ]
 
 
+textColumn : Element msg
 textColumn =
     column
         [ width (fillPortion 2)
@@ -40,8 +41,9 @@ textColumn =
         ]
 
 
+imageColumn : Element msg
 imageColumn =
-    column [ width (fillPortion 1) ]
+    column [ paddingXY 0 15, width (fillPortion 1) ]
         [ image
             [ paddingXY 0 15
             , width (px 200)
@@ -50,6 +52,7 @@ imageColumn =
             { src = "/patch-mobile.png"
             , description = "Patch Image."
             }
+        , el [ centerX, paddingEach { top = 0, bottom = 10, left = 0, right = 0 } ] (paragraph [ Font.bold ] [ text "$6.95" ])
         , Components.buyButton
         ]
 

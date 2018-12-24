@@ -39,6 +39,7 @@ logo =
         }
 
 
+contactLink : Element msg
 contactLink =
     newTabLink
         [ Font.color Styles.colors.white

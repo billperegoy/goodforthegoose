@@ -22,6 +22,7 @@ view =
         ]
 
 
+headerParagraph : Element msg
 headerParagraph =
     paragraph
         [ Font.size Styles.fontSizes.bodyHead
@@ -35,6 +36,7 @@ headerParagraph =
         [ text headerText ]
 
 
+bodyParagraphs : Element msg
 bodyParagraphs =
     let
         noPadding =
@@ -71,25 +73,31 @@ bulletedList lines =
         )
 
 
+headerText : String
 headerText =
     "Winter can be a very bad time to be a goose or a coyote. Or a mink, rabbit, ermine, or fox."
 
 
+paragraph1 : String
 paragraph1 =
     "It’s not about the weather. The problem is people —who think it’s alright to inhumanely raise or trap and kill animals for the sake of fashion."
 
 
+paragraph2 : String
 paragraph2 =
     "If you don’t believe in cruelly exploiting animals to make your outerwear:"
 
 
+bullet1 : String
 bullet1 =
     "» choose a coat not stuffed with feathers, trimmed with fur, or made of wool"
 
 
+bullet2 : String
 bullet2 =
     "» pick up our cruelty-free patch to it to show you’re proud of not being a murderer this year, or any year "
 
 
+paragraph3 : String
 paragraph3 =
     "You can learn more about the cruelty that goes into animal-based garments here and here. Be warned, this might (should!) upset you."

@@ -3,7 +3,7 @@ module Main exposing (..)
 import Browser
 import Browser.Events as Events
 import Html exposing (Html)
-import Element exposing (Element, fill, width, centerX, layout, paddingXY, column, maximum, px)
+import Element exposing (Element, fill, width, centerX, layout, paddingXY, column, maximum, minimum, px)
 import Model exposing (..)
 import Styles
 import Header
