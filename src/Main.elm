@@ -56,17 +56,14 @@ update msg model =
 view : Model -> Html Msg
 view model =
     layout
-        [ centerX
-        , width fill
-        , paddingXY 20 20
-        ]
+        []
         (page model)
 
 
 page : Model -> Element msg
 page model =
     column
-        [ width fill ]
+        [ width (fill |> maximum 1000), centerX ]
         [ Header.view
         , Hero.view model.screenSize
         , About.view
