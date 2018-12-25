@@ -8,14 +8,7 @@ import Element.Input as Input
 import Styles
 import Components
 import Model
-
-
-direction : Model.ScreenSize -> (List (Element.Attribute msg) -> List (Element msg) -> Element msg)
-direction screenSize =
-    if screenSize == Model.NarrowMobile then
-        column
-    else
-        row
+import Utilities
 
 
 view : Model.ScreenSize -> Element msg
@@ -25,7 +18,7 @@ view screenSize =
         , width fill
         ]
     <|
-        (direction screenSize) [ width fill ]
+        (Utilities.direction screenSize) [ width fill ]
             [ heroText
             , patch screenSize
             ]

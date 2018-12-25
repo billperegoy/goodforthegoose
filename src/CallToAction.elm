@@ -5,11 +5,13 @@ import Element.Background as Background
 import Element.Font as Font
 import Components
 import Styles
+import Model
+import Utilities
 
 
-view : Element msg
-view =
-    row
+view : Model.ScreenSize -> Element msg
+view screenSize =
+    (Utilities.direction screenSize)
         [ width fill
         , Background.color Styles.colors.cyanBlue
         , Font.color Styles.colors.white

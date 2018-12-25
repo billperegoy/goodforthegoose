@@ -67,7 +67,7 @@ page model =
         [ Header.view
         , Hero.view model.screenSize
         , About.view
-        , CallToAction.view
+        , CallToAction.view model.screenSize
         , Footer.view
         ]
 
