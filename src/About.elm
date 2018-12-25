@@ -1,6 +1,6 @@
 module About exposing (view)
 
-import Element exposing (Element, spacing, column, paddingEach, fill, width, paragraph, text, centerX, html)
+import Element as UI
 import Element.Font as Font
 import Element.Background as Background
 import Html
@@ -8,54 +8,58 @@ import Html.Attributes as Attr
 import Styles
 
 
-view : Element msg
+view : UI.Element msg
 view =
-    column
-        [ width fill
+    UI.column
+        [ UI.width UI.fill
         , Background.color Styles.colors.pink
-        , paddingEach { top = 64, bottom = 64, left = 64, right = 64 }
         , Font.color Styles.colors.white
-        , centerX
+        , UI.padding 64
+        , UI.centerX
         ]
         [ headerParagraph
         , bodyParagraphs
         ]
 
 
-headerParagraph : Element msg
+headerParagraph : UI.Element msg
 headerParagraph =
-    paragraph
-        [ Font.size Styles.fontSizes.bodyHead
-        , Styles.fontFamilies.bitter
-        , spacing 18
-        , Font.letterSpacing 2
-        , Font.bold
-        , Font.center
-        , paddingEach { top = 0, bottom = 32, left = 0, right = 0 }
-        ]
-        [ text headerText ]
+    let
+        noPadding =
+            Styles.noPadding
+    in
+        UI.paragraph
+            [ Font.size Styles.fontSizes.bodyHead
+            , Styles.fontFamilies.bitter
+            , UI.spacing 18
+            , Font.letterSpacing 2
+            , Font.bold
+            , Font.center
+            , UI.paddingEach { noPadding | bottom = 32 }
+            ]
+            [ UI.text headerText ]
 
 
-bodyParagraphs : Element msg
+bodyParagraphs : UI.Element msg
 bodyParagraphs =
     let
         noPadding =
             Styles.noPadding
 
         textStyling =
-            [ spacing 16, paddingEach { noPadding | top = 40 } ]
+            [ UI.spacing 16, UI.paddingEach { noPadding | top = 40 } ]
 
         bulletStyling =
-            [ spacing 16, paddingEach { noPadding | left = 32 } ]
+            [ UI.spacing 16, UI.paddingEach { noPadding | left = 32 } ]
     in
-        column
+        UI.column
             [ Font.size Styles.fontSizes.bodyText
             , Styles.fontFamilies.hind
             ]
-            [ paragraph textStyling [ text paragraph1 ]
-            , paragraph textStyling [ text paragraph2 ]
-            , paragraph bulletStyling [ html (bulletedList [ bullet1, bullet2 ]) ]
-            , paragraph textStyling [ text paragraph3 ]
+            [ UI.paragraph textStyling [ UI.text paragraph1 ]
+            , UI.paragraph textStyling [ UI.text paragraph2 ]
+            , UI.paragraph bulletStyling [ UI.html (bulletedList [ bullet1, bullet2 ]) ]
+            , UI.paragraph textStyling [ UI.text paragraph3 ]
             ]
 
 

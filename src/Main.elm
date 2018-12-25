@@ -3,7 +3,7 @@ module Main exposing (..)
 import Browser
 import Browser.Events as Events
 import Html exposing (Html)
-import Element exposing (Element, fill, width, centerX, layout, paddingXY, column, maximum, minimum, px)
+import Element as UI
 import Model exposing (..)
 import Styles
 import Header
@@ -55,15 +55,17 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    layout
+    UI.layout
         []
         (page model)
 
 
-page : Model -> Element msg
+page : Model -> UI.Element msg
 page model =
-    column
-        [ width (fill |> maximum 1000), centerX ]
+    UI.column
+        [ UI.width (UI.fill |> UI.maximum 1000)
+        , UI.centerX
+        ]
         [ Header.view
         , Hero.view model.screenSize
         , About.view

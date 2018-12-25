@@ -1,6 +1,6 @@
 module CallToAction exposing (view)
 
-import Element exposing (Element, padding, paddingEach, paddingXY, fillPortion, width, column, spacing, fill, row, paragraph, image, text, px, centerX, el)
+import Element as UI
 import Element.Background as Background
 import Element.Font as Font
 import Components
@@ -9,52 +9,56 @@ import Model
 import Utilities
 
 
-view : Model.ScreenSize -> Element msg
+view : Model.ScreenSize -> UI.Element msg
 view screenSize =
     (Utilities.direction screenSize)
-        [ width fill
+        [ UI.width UI.fill
         , Background.color Styles.colors.cyanBlue
         , Font.color Styles.colors.white
-        , spacing 20
+        , UI.spacing 20
         ]
         [ textColumn
         , imageColumn
         ]
 
 
-textColumn : Element msg
+textColumn : UI.Element msg
 textColumn =
-    column
-        [ width (fillPortion 2)
-        , paddingEach { left = 64, right = 0, top = 64, bottom = 64 }
-        , spacing 16
+    UI.column
+        [ UI.width (UI.fillPortion 2)
+        , UI.paddingEach { left = 64, right = 0, top = 64, bottom = 64 }
+        , UI.spacing 16
         ]
-        [ paragraph
+        [ UI.paragraph
             [ Font.size Styles.fontSizes.callToActionBodyHead
             , Styles.fontFamilies.hind
             ]
-            [ text "Stick it on your coat!" ]
-        , paragraph
+            [ UI.text "Stick it on your coat!" ]
+        , UI.paragraph
             [ Font.size Styles.fontSizes.bodyText
             , Styles.fontFamilies.hind
-            , spacing 16
+            , UI.spacing 16
             ]
-            [ text bodyText ]
+            [ UI.text bodyText ]
         ]
 
 
-imageColumn : Element msg
+imageColumn : UI.Element msg
 imageColumn =
-    column [ paddingXY 0 15, width (fillPortion 1) ]
-        [ image
-            [ paddingXY 0 15
-            , width (px 200)
-            , centerX
+    UI.column [ UI.paddingXY 0 15, UI.width (UI.fillPortion 1) ]
+        [ UI.image
+            [ UI.paddingXY 0 15
+            , UI.width (UI.px 200)
+            , UI.centerX
             ]
             { src = "/patch-mobile.png"
             , description = "Patch Image."
             }
-        , el [ centerX, paddingEach { top = 0, bottom = 10, left = 0, right = 0 } ] (paragraph [ Font.bold ] [ text "$6.95" ])
+        , UI.el
+            [ UI.centerX
+            , UI.paddingEach { top = 0, bottom = 10, left = 0, right = 0 }
+            ]
+            (UI.paragraph [ Font.bold ] [ UI.text "$6.95" ])
         , Components.buyButton
         ]
 

@@ -1,23 +1,23 @@
 module Header exposing (..)
 
-import Element exposing (Element, alignRight, spacing, row, paddingEach, fill, width, el, text, newTabLink, px, height, image)
+import Element as UI
 import Element.Font as Font
 import Element.Background as Background
 import Styles
 
 
-view : Element msg
+view : UI.Element msg
 view =
     let
         noPadding =
             Styles.noPadding
     in
-        row
-            [ width fill
+        UI.row
+            [ UI.width UI.fill
             , Background.color Styles.colors.cyanBlue
             , Font.size Styles.fontSizes.menuText
             , Styles.fontFamilies.hind
-            , paddingEach
+            , UI.paddingEach
                 { noPadding | top = 5, left = 16, right = 32 }
             ]
             [ logo
@@ -25,29 +25,29 @@ view =
             ]
 
 
-logo : Element msg
+logo : UI.Element msg
 logo =
-    image
-        [ height (px 70) ]
+    UI.image
+        [ UI.height (UI.px 70) ]
         { src = "/good-for-the-goose-logo.png"
         , description = "Good for the Goose Logo"
         }
 
 
-menu : Element msg
+menu : UI.Element msg
 menu =
-    row
-        [ spacing 15
-        , alignRight
+    UI.row
+        [ UI.spacing 15
+        , UI.alignRight
         ]
         [ menuElement "contact" "mailto:info@goodforthegoose.com"
         ]
 
 
-menuElement : String -> String -> Element msg
+menuElement : String -> String -> UI.Element msg
 menuElement name url =
-    newTabLink
+    UI.newTabLink
         [ Font.color Styles.colors.white ]
         { url = url
-        , label = text name
+        , label = UI.text name
         }

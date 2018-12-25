@@ -1,6 +1,6 @@
 module Hero exposing (view)
 
-import Element exposing (Element, fill, width, px, height, el, fillPortion, column, row, text, paragraph, paddingEach, image, alignRight, alignTop, centerX, paddingXY, spacing)
+import Element as UI
 import Element.Background as Background
 import Element.Font as Font
 import Element.Border as Border
@@ -11,20 +11,20 @@ import Model
 import Utilities
 
 
-view : Model.ScreenSize -> Element msg
+view : Model.ScreenSize -> UI.Element msg
 view screenSize =
-    el
+    UI.el
         [ Background.image "/goose-mobile.png"
-        , width fill
+        , UI.width UI.fill
         ]
     <|
-        (Utilities.direction screenSize) [ width fill ]
+        (Utilities.direction screenSize) [ UI.width UI.fill ]
             [ heroText
             , patch screenSize
             ]
 
 
-patch : Model.ScreenSize -> Element msg
+patch : Model.ScreenSize -> UI.Element msg
 patch screenSize =
     let
         noPadding =
@@ -32,29 +32,29 @@ patch screenSize =
 
         imageAttributes =
             if screenSize == Model.NarrowMobile then
-                [ centerX
-                , paddingEach { noPadding | bottom = 20 }
+                [ UI.centerX
+                , UI.paddingEach { noPadding | bottom = 20 }
                 ]
             else
-                [ width (fillPortion 2)
-                , paddingEach { noPadding | top = 14, right = 30 }
-                , alignRight
+                [ UI.width (UI.fillPortion 2)
+                , UI.paddingEach { noPadding | top = 14, right = 30 }
+                , UI.alignRight
                 ]
     in
-        image
+        UI.image
             imageAttributes
             { src = "/patch-mobile.png"
             , description = "Patch Image."
             }
 
 
-heroText : Element msg
+heroText : UI.Element msg
 heroText =
-    column
-        [ width (fillPortion 3)
-        , alignTop
-        , paddingXY 32 80
-        , centerX
+    UI.column
+        [ UI.width (UI.fillPortion 3)
+        , UI.alignTop
+        , UI.paddingXY 32 80
+        , UI.centerX
         ]
         [ heroHeader
         , heroSubhead
@@ -62,39 +62,39 @@ heroText =
         ]
 
 
-heroHeader : Element msg
+heroHeader : UI.Element msg
 heroHeader =
     let
         noPadding =
             Styles.noPadding
     in
-        paragraph
+        UI.paragraph
             [ Font.heavy
             , Font.size Styles.fontSizes.heroHeadline
             , Font.color Styles.colors.pink
             , Styles.fontFamilies.bitter
-            , paddingEach { noPadding | bottom = 30 }
+            , UI.paddingEach { noPadding | bottom = 30 }
             , Font.center
             , Font.letterSpacing 2
-            , centerX
+            , UI.centerX
             ]
-            [ text "NOT FEELING UP TO CRUELTY THIS WINTER?" ]
+            [ UI.text "NOT FEELING UP TO CRUELTY THIS WINTER?" ]
 
 
-heroSubhead : Element msg
+heroSubhead : UI.Element msg
 heroSubhead =
     let
         noPadding =
             Styles.noPadding
     in
-        paragraph
+        UI.paragraph
             [ Font.size Styles.fontSizes.heroSubhead
             , Font.color Styles.colors.greenGrey
             , Styles.fontFamilies.hind
             , Font.center
-            , spacing 10
-            , paddingEach { noPadding | bottom = 30 }
-            , centerX
+            , UI.spacing 10
+            , UI.paddingEach { noPadding | bottom = 30 }
+            , UI.centerX
             ]
-            [ text "Stick this patch on your jacket to let everyone know."
+            [ UI.text "Stick this patch on your jacket to let everyone know."
             ]

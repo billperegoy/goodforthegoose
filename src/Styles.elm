@@ -1,17 +1,17 @@
 module Styles exposing (..)
 
-import Element exposing (rgb255)
+import Element as UI
 import Element.Font as Font
 
 
 colors =
-    { cyanBlue = rgb255 41 171 226
-    , pink = rgb255 217 61 89
-    , greenGrey = rgb255 66 85 89
-    , mediumGrey = rgb255 102 102 102
-    , white = rgb255 255 255 255
-    , lightOrange = rgb255 242 145 61
-    , darkOrange = rgb255 244 145 61
+    { cyanBlue = UI.rgb255 41 171 226
+    , pink = UI.rgb255 217 61 89
+    , greenGrey = UI.rgb255 66 85 89
+    , mediumGrey = UI.rgb255 102 102 102
+    , white = UI.rgb255 255 255 255
+    , lightOrange = UI.rgb255 242 145 61
+    , darkOrange = UI.rgb255 244 145 61
     }
 
 
