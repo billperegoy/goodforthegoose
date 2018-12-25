@@ -26,6 +26,6 @@ patch : List (UI.Attribute msg) -> UI.Element msg
 patch attributes =
     UI.image
         attributes
-        { src = "/patch-mobile.png"
+        { src = "/patch.png"
         , description = "Patch Image."
         }
