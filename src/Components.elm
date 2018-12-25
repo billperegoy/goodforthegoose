@@ -1,4 +1,4 @@
-module Components exposing (buyButton)
+module Components exposing (buyButton, patch)
 
 import Element as UI
 import Element.Background as Background
@@ -19,4 +19,13 @@ buyButton =
         ]
         { label = UI.el [ Font.color Styles.colors.white ] (UI.text "buy now")
         , onPress = Nothing
+        }
+
+
+patch : List (UI.Attribute msg) -> UI.Element msg
+patch attributes =
+    UI.image
+        attributes
+        { src = "/patch-mobile.png"
+        , description = "Patch Image."
         }

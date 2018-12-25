@@ -41,11 +41,7 @@ patch screenSize =
                 , UI.alignRight
                 ]
     in
-        UI.image
-            imageAttributes
-            { src = "/patch-mobile.png"
-            , description = "Patch Image."
-            }
+        Components.patch imageAttributes
 
 
 heroText : UI.Element msg

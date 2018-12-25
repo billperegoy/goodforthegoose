@@ -45,22 +45,30 @@ textColumn =
 
 imageColumn : UI.Element msg
 imageColumn =
-    UI.column [ UI.paddingXY 0 15, UI.width (UI.fillPortion 1) ]
-        [ UI.image
+    let
+        imageAttributes =
             [ UI.paddingXY 0 15
             , UI.width (UI.px 200)
             , UI.centerX
             ]
-            { src = "/patch-mobile.png"
-            , description = "Patch Image."
-            }
-        , UI.el
-            [ UI.centerX
-            , UI.paddingEach { top = 0, bottom = 10, left = 0, right = 0 }
+    in
+        UI.column
+            [ UI.paddingXY 0 15
+            , UI.width (UI.fillPortion 1)
             ]
-            (UI.paragraph [ Font.bold ] [ UI.text "$6.95" ])
-        , Components.buyButton
+            [ Components.patch imageAttributes
+            , price
+            , Components.buyButton
+            ]
+
+
+price : UI.Element msg
+price =
+    UI.el
+        [ UI.centerX
+        , UI.paddingEach { top = 0, bottom = 10, left = 0, right = 0 }
         ]
+        (UI.paragraph [ Font.bold ] [ UI.text "$6.95" ])
 
 
 bodyText : String
